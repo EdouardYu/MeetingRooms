@@ -56,10 +56,18 @@ module.exports = (app) => {
     } else {
       Room.find({'capacity': { $gt: capacity-1 }, 'reserved': reserved}).then(rooms => {
         if(rooms.length == 0){
-          message = 'Il n\'y a aucune salle de disponible pour l\'instant Veuillez réessayer plus tard';
+          if(reserved){
+            message = 'Toutes les salles sont disponibles ! Vous pouvez en réserver une';
+          } else {
+            message = 'Il n\'y a aucune salle de disponible pour l\'instant Veuillez réessayer plus tard';
+          }
           return res.json({message});
         }
-        message = `Il y a actuellement ${pluralize(rooms.length, 'salle', 'salles')} de disponible`;
+        if(reserved){
+          message = `Il y a actuellement ${pluralize(rooms.length, 'salle réservée', 'salles réservées')}`;
+        } else {
+          message = `Il y a actuellement ${pluralize(rooms.length, 'salle', 'salles')} de disponible`;
+        }
         res.json(success(message, rooms));
       }).catch(() => {
         message = 'Erreur 500 : Oups! Une erreur est survenue de notre côté Veuillez réessayer plus tard';
