@@ -2,8 +2,9 @@ const Room = require('../models/room');
 const { success, pluralize } = require('../helper');
   
 module.exports = (app) => {
-  app.get('/api/availableRooms', (req, res) => {
+  app.get('/api/availableRooms/:reserved', (req, res) => {
     let message = '';
+    const reserved = (req.params.reserved == 'true' || parseInt(req.params.reserved) == 1);
     const capacity = req.query.capacity || 1;
     const equipement1 = req.query.equipement1 || '';
     const equipement2 = req.query.equipement2 || '';
@@ -53,7 +54,7 @@ module.exports = (app) => {
         res.status(500).json({message});
       });
     } else {
-      Room.find({'capacity': { $gt: capacity-1 }, 'reserved': false}).then(rooms => {
+      Room.find({'capacity': { $gt: capacity-1 }, 'reserved': reserved}).then(rooms => {
         if(rooms.length == 0){
           message = 'Il n\'y a aucune salle de disponible pour l\'instant Veuillez réessayer plus tard';
           return res.json({message});
