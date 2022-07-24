@@ -59,9 +59,9 @@ module.exports = (app) => {
           if(reserved){
             message = 'Toutes les salles sont disponibles ! Vous pouvez en réserver une';
           } else {
-            message = 'Il n\'y a aucune salle de disponible pour l\'instant Veuillez réessayer plus tard';
+            message = 'Il n\'y a aucune salle de disponible pour l\'instant. Veuillez réessayer plus tard';
           }
-          return res.json({message});
+          return res.json(success(message, rooms));
         }
         if(reserved){
           message = `Il y a actuellement ${pluralize(rooms.length, 'salle réservée', 'salles réservées')}`;

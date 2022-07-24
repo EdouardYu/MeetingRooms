@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "1d5a7c3a-8a78-442c-815f-38b671ee6149",
+		"name": "MeetingRoom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22057795"
+	},
+	"item": [
+		{
+			"name": "GET /api/availableRooms/:reserved?capacity=&equipement=&equipement2=",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/availableRooms/1?capacity=1&equipement1=&equipement2=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"availableRooms",
+						"1"
+					],
+					"query": [
+						{
+							"key": "capacity",
+							"value": "1"
+						},
+						{
+							"key": "equipement1",
+							"value": ""
+						},
+						{
+							"key": "equipement2",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/switchStateRoom?name=",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"reserved\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/switchStateRoom?name=Salle Facebook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"switchStateRoom"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Salle Facebook"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
