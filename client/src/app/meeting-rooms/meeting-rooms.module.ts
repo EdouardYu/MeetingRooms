@@ -6,7 +6,6 @@ import { UnavailableMeetingRoomsComponent } from './unavailable-meeting-rooms/un
 import { RouterModule, Routes } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
-import { LoaderComponent } from './loader/loader.component';
 import { SearchMeetingRoomsService } from './search-meeting-rooms/search-meeting-rooms.service';
 
 const meettingRoomsRoutes: Routes = [
@@ -21,7 +20,6 @@ const meettingRoomsRoutes: Routes = [
     SearchMeetingRoomsComponent,
     AvailableMeetingRoomsComponent,
     UnavailableMeetingRoomsComponent,
-    LoaderComponent
   ],
   imports: [
     CommonModule,

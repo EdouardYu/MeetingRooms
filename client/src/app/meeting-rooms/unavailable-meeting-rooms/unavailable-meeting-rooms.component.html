@@ -10,5 +10,10 @@
             </ul>
         </div>
     </div>
-    <app-loader *ngIf="roomList && roomList.data.length == 0" [message]="roomList.message"></app-loader>
+    <h2 *ngIf="!roomList">
+        Chargement, veuillez patienter...
+    </h2>
+    <h2 *ngIf="roomList && roomList.data.length == 0">
+        Toutes les salles sont disponibles ! Vous pouvez en réserver une
+    </h2>
 </main>
