@@ -1,0 +1,31 @@
+<main>		
+	<form (ngSubmit)="onSubmit(roomForm)" #roomForm="ngForm">
+    <h2>Rechercher une salle disponible</h2>
+		<div>
+			<label class="capacity" for="capacity">Nombre de personnes</label><br/>
+			<input type="number" id="capacity" 
+        required
+        pattern="^[0-9]{1,2}$"
+        min="1"
+        max="26"
+        [(ngModel)]="searchRoom.capacity" name="capacity" #capacity="ngModel"/>
+      <div [hidden]="capacity.valid || capacity.pristine" class="erreur">
+        <p>Veuillez choisir entre 1 à 26 personnes</p>
+      </div>
+		</div>
+    <div class="equipements">
+      <legend>Equipements</legend>
+      <div class="equipement1">
+        <input class="box" type="checkbox" id="TV" [(ngModel)]="searchRoom.equipement1" name="equipement1"/>
+        <label for="TV">TV</label>
+      </div>
+      <div class="equipement2">
+        <input class="box" type="checkbox" id="retro_projecteur" [(ngModel)]="searchRoom.equipement2" name="equipement2"/>
+        <label for="retro_projecteur">Retro Projecteur</label>
+      </div>
+    </div>
+    <div>
+			<button type="submit" [disabled]="!roomForm.form.valid">Rechercher</button>
+		</div>
+	</form>
+</main>

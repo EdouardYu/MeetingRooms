@@ -1,0 +1,66 @@
+form {
+    margin: 30px auto;
+    border : 2px solid rgba(0,0,0,0.25);
+    width: 400px;
+    padding: 30px;
+
+}
+
+h2 {
+    padding-bottom: 30px;
+}
+
+h2, p {
+    text-align: center;
+    cursor: default;
+}
+  
+.capacity, legend {
+    font-weight: bold;
+    cursor: default;
+}
+
+input[type=number] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid rgba(0,0,0,0.25);
+}
+
+input[type=checkbox] {
+    cursor: pointer;
+}
+
+.equipements, .equipement2 {
+    padding-bottom: 10px;
+}
+
+.equipement1, .erreur {
+    padding: 10px 0;
+}
+
+.box {
+    margin-right: 10px;
+}
+  
+button {
+    border-color: rgba(0,0,0,0.25);
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    color: rgba(0,0,0,0.25);
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #fab92b;
+    border-color: #fab92b;
+}
+
+@media screen and (max-width: 400px){
+    form{
+        width: 100%;
+    }
+}

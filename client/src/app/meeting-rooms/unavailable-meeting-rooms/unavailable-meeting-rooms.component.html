@@ -1,0 +1,14 @@
+<main>
+    <div *ngIf="roomList">
+        <div *ngFor="let room of roomList.data">
+            <ul>
+                <li>Nom : {{room.name}}</li>
+                <li>Description : {{room.description}}</li>
+                <li>Capacité : {{room.capacity}}</li>
+                <li *ngIf="room.equipements.join()">Equipements : {{room.equipements.join(', ')}}</li>
+                <button (click)="freeUpRoom(room.name)">Libérer la salle</button>
+            </ul>
+        </div>
+    </div>
+    <app-loader *ngIf="roomList && roomList.data.length == 0" [message]="roomList.message"></app-loader>
+</main>

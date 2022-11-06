@@ -1,0 +1,29 @@
+main {
+    text-align: center;
+} 
+
+h1 {
+    font-size: 24px; 
+    cursor: default;
+    margin: 32px 0
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    background-color: #0bbbef;
+}
+button :hover {
+    background-color: #1061c0;
+    border-radius: 5px;
+}
+
+a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer; 
+}
