@@ -5,7 +5,6 @@ import { timer } from 'rxjs';
   selector: 'app-loader',
   template: `
     <h2 *ngIf="!error">
-      Oups! Une erreur est survenue de notre côté Veuillez réessayer plus tard
       Chargement, veuillez patienter ...
     </h2>
     <h2 *ngIf="error">
