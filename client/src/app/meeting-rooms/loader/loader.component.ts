@@ -5,6 +5,7 @@ import { timer } from 'rxjs';
   selector: 'app-loader',
   template: `
     <h2 *ngIf="!error">
+      Oups! Une erreur est survenue de notre côté Veuillez réessayer plus tard
       Chargement, veuillez patienter ...
     </h2>
     <h2 *ngIf="error">
@@ -17,7 +18,7 @@ export class LoaderComponent implements OnInit {
   error: boolean = false;
   
   ngOnInit(): void {
-    timer(1).subscribe((): void => {
+    timer(10000).subscribe((): void => {
       this.error = true;
     })
   }
