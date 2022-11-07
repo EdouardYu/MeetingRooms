@@ -17,7 +17,7 @@ export class LoaderComponent implements OnInit {
   error: boolean = false;
   
   ngOnInit(): void {
-    timer(10000).subscribe((): void => {
+    timer(1).subscribe((): void => {
       this.error = true;
     })
   }
