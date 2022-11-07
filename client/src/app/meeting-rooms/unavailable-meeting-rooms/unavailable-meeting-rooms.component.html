@@ -10,9 +10,7 @@
             </ul>
         </div>
     </div>
-    <h2 *ngIf="!roomList">
-        Chargement, veuillez patienter...
-    </h2>
+    <app-loader *ngIf="!roomList"></app-loader>
     <h2 *ngIf="roomList && roomList.data.length == 0">
         Toutes les salles sont disponibles ! Vous pouvez en réserver une
     </h2>

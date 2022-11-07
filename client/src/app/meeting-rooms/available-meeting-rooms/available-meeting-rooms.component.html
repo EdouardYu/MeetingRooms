@@ -10,9 +10,7 @@
             </ul>
         </div>
     </div>
-    <h2 *ngIf="!roomList">
-        Chargement, veuillez patienter...
-    </h2>
+    <app-loader *ngIf="!roomList"></app-loader>
     <h2 *ngIf="roomList && roomList.data.length == 0">
         Il n'y a aucune salle de disponible pour l'instant. Veuillez réessayer plus tard
     </h2>
