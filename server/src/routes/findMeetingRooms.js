@@ -5,7 +5,7 @@ module.exports = (app) => {
   app.get('/api/availableRooms/:reserved', (req, res) => {
     let message = '';
     const reserved = (req.params.reserved == 'true' || parseInt(req.params.reserved) == 1);
-    const capacity = parseInt(req.query.capacity) || 0;
+    const capacity = parseInt(req.query.capacity) || 1;
     const equipement1 = req.query.equipement1 || '';
     const equipement2 = req.query.equipement2 || '';
     if(capacity < 1 || capacity > 26) {

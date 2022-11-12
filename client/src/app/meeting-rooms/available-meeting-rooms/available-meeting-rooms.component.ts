@@ -24,8 +24,7 @@ export class AvailableMeetingRoomsComponent implements OnInit {
     if(this.data.equipement2){
       equipement2 = 'Retro Projecteur';
     } 
-    //Ne pas faire attention à l'url, elle a été généré automatiquement par l'hébergeur
-    const urlFind =`https://young-reaches-00340.herokuapp.com/api/availableRooms/0?capacity=${capacity}&equipement1=${equipement1}&equipement2=${equipement2}`;
+    const urlFind =`https://meeting-rooms-22.herokuapp.com/api/availableRooms/0?capacity=${capacity}&equipement1=${equipement1}&equipement2=${equipement2}`;
     this.http.get<any>(urlFind).subscribe(roomList => {
       this.roomList = roomList;
     });
@@ -36,8 +35,7 @@ export class AvailableMeetingRoomsComponent implements OnInit {
     const httpOptions = {
       headers : new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    //Ne pas faire attention à l'url, elle a été généré automatiquement par l'hébergeur
-    const urlUpdate = `https://young-reaches-00340.herokuapp.com/api/switchStateRoom?name=${roomName}`;
+    const urlUpdate = `https://meeting-rooms-22.herokuapp.com/api/switchStateRoom?name=${roomName}`;
     return this.http.put<any>(urlUpdate, {"reserved": true }, httpOptions).subscribe(() => this.router.navigate(['/unavailableRooms']));
   }
 }

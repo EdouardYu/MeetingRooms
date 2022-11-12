@@ -14,8 +14,7 @@ export class UnavailableMeetingRoomsComponent implements OnInit {
 
   //Initialisation des salles réservées :
   ngOnInit(): void {
-    //Ne faites pas attention à l'url, elle a été généré automatiquement par l'hébergeur
-    const urlFind = 'https://young-reaches-00340.herokuapp.com/api/availableRooms/1';
+    const urlFind = 'https://meeting-rooms-22.herokuapp.com/api/availableRooms/1';
     this.http.get<any>(urlFind).subscribe(roomList => {
       this.roomList = roomList;
     });
@@ -26,8 +25,7 @@ export class UnavailableMeetingRoomsComponent implements OnInit {
     const httpOptions = {
       headers : new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    //Ne pas faire attention à l'url, elle a été généré automatiquement par l'hébergeur
-    const urlUpdate = `https://young-reaches-00340.herokuapp.com/api/switchStateRoom?name=${roomName}`;
+    const urlUpdate = `https://meeting-rooms-22.herokuapp.com/api/switchStateRoom?name=${roomName}`;
     return this.http.put<any>(urlUpdate, {"reserved": false }, httpOptions).subscribe(() => this.router.navigate(['/searchAvailableRooms']));
   }
 }
