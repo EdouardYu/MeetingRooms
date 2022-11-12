@@ -5,16 +5,16 @@ module.exports = (app) => {
   app.get('/api/availableRooms/:reserved', (req, res) => {
     let message = '';
     const reserved = (req.params.reserved == 'true' || parseInt(req.params.reserved) == 1);
-    const capacity = req.query.capacity || 1;
+    const capacity = parseInt(req.query.capacity) || 0;
     const equipement1 = req.query.equipement1 || '';
     const equipement2 = req.query.equipement2 || '';
-    if(capacity < 1) {
+    if(capacity < 1 || capacity > 26) {
       message = 'Erreur 400 : Veuillez choisir un nombre de personnes valide (1-26 per)';
       return res.status(400).json({message});
     }
     const equipements = ['', 'TV', 'Retro Projecteur'];
     if(!equipements.includes(equipement1) || !equipements.includes(equipement2)) {
-      message = "Erreur 400 : Veuillez choisir un équipement disponible dans ['TV', 'Retro Projecteur']";
+      message = "Erreur 400 : Veuillez choisir un équipement disponible dans ['TV', 'Retro Projecteur'] ou ne rien mettre";
       return res.status(400).json({message});
     }
     if(equipement1 != '' && equipement2 != ''){
@@ -24,10 +24,10 @@ module.exports = (app) => {
           return res.json({message});
         }
         message = `Il y a actuellement ${pluralize(rooms.length, 'salle', 'salles')} de disponible`;
-        res.json(success(message, rooms));
+        return res.json(success(message, rooms));
       }).catch(() => {
         message = 'Erreur 500 : Oups! Une erreur est survenue de notre côté Veuillez réessayer plus tard';
-        res.status(500).json({message});
+        return res.status(500).json({message});
       });
     } else if(equipement1 != ''){
       Room.find({'capacity': { $gt: capacity-1 }, 'equipements': { $in: [equipement1]}, 'reserved': false}).then(rooms => {
@@ -36,10 +36,10 @@ module.exports = (app) => {
           return res.json({message});
         }
         message = `Il y a actuellement ${pluralize(rooms.length, 'salle', 'salles')} de disponible`;
-        res.json(success(message, rooms));
+        return res.json(success(message, rooms));
       }).catch(() => {
         message = 'Erreur 500 : Oups! Une erreur est survenue de notre côté Veuillez réessayer plus tard';
-        res.status(500).json({message});
+        return res.status(500).json({message});
       });
     } else if(equipement2 != ''){
       Room.find({'capacity': { $gt: capacity-1 }, 'equipements': { $in: [equipement2]}, 'reserved': false}).then(rooms => {
@@ -48,10 +48,10 @@ module.exports = (app) => {
           return res.json({message});
         }
         message = `Il y a actuellement ${pluralize(rooms.length, 'salle', 'salles')} de disponible`;
-        res.json(success(message, rooms));
+        return res.json(success(message, rooms));
       }).catch(() => {
         message = 'Erreur 500 : Oups! Une erreur est survenue de notre côté Veuillez réessayer plus tard';
-        res.status(500).json({message});
+        return res.status(500).json({message});
       });
     } else {
       Room.find({'capacity': { $gt: capacity-1 }, 'reserved': reserved}).then(rooms => {
@@ -68,10 +68,10 @@ module.exports = (app) => {
         } else {
           message = `Il y a actuellement ${pluralize(rooms.length, 'salle', 'salles')} de disponible`;
         }
-        res.json(success(message, rooms));
+        return res.json(success(message, rooms));
       }).catch(() => {
         message = 'Erreur 500 : Oups! Une erreur est survenue de notre côté Veuillez réessayer plus tard';
-        res.status(500).json({message});
+        return res.status(500).json({message});
       });
     }
   });
